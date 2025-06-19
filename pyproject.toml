@@ -1,0 +1,39 @@
+[build-system]
+requires = ["hatchling>=1.24"]
+build-backend = "hatchling.build"
+
+[project]
+name = "ship_chat"
+version = "0.1.0"
+description = "Private, fully-local Retrieval-Augmented Chatbot"
+readme = "README.md"
+requires-python = ">=3.9"
+
+# ───────────────
+# Runtime deps ONLY
+# ───────────────
+dependencies = [
+  # core pipeline
+  "chromadb>=0.5.1,<0.6",
+  "sentence-transformers>=2.6,<3",
+  "pymupdf>=1.24,<1.25",
+  "tiktoken>=0.6,<0.7",
+  "ollama>=0.2,<0.3",
+
+  # numeric / ML
+  "numpy>=1.26,<2",
+
+  # CLI / UX
+  "typer[all]>=0.12,<0.13",
+  "tqdm>=4.66,<5",
+
+  # config parsing
+  "PyYAML>=6,<7",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["ship_chat"]        # <── add this
+
+[project.scripts]
+# `pip install .` will expose this console entry-point:
+ship_chat = "ship_chat.cli:app"

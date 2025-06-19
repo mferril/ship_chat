@@ -1,0 +1,22 @@
+# To be run once
+# Which PDFs to vectorise
+pdf_dir: data/pdfs
+
+# Where the persistent DB lives
+db_path: data/chroma
+collection: internal_notes
+
+# Chunking
+chunk:
+  max_tokens: 500
+  overlap_tokens: 50
+  tokenizer: gpt2
+
+# Embeddings
+embedding:
+  model: sentence-transformers/all-MiniLM-L6-v2 # 384 dimensional embeddings
+  batch_size: 64
+  device: cpu           # or 'cuda'
+
+# Logging
+verbose: true

@@ -1,0 +1,17 @@
+# Configuration for the user-facing chat application
+db_path: data/chroma
+collection: internal_notes
+
+retriever:
+  top_k: 5
+
+embedding:
+  model: sentence-transformers/all-MiniLM-L6-v2 # 384 dimensional embeddings
+  batch_size: 64
+  device: cpu
+
+# LLM served by Ollama
+llm:
+  # model: mistral:7b-instruct
+  model: phi3:mini
+  temperature: 0.1
